@@ -43,7 +43,7 @@
     <main>
   <!-- //---------------------------------Publish------------------------------------// -->
       <div class="publishcontainer content-section" id="publishContainer">
-    <form  method="post" enctype="multipart/form-data" id="uploadForm" >
+    <form  method="post" enctype="multipart/form-data" id="uploadForm" action="{{route('creator.game.store')}}">
         
     @csrf
 

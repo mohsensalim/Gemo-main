@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Creator\CreatorHomeController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\Creator\Auth\CreatorLoginController;
 use App\Http\Controllers\Creator\Auth\CreatorRegisterController;
 /*
@@ -18,7 +19,8 @@ Route::middleware('creator')->group(function () {
     // Routes accessible only to creators
     Route::get('creator/dashboard/home',[CreatorHomeController::class,'index'])->name('creator.dashboard.home')->middleware('auth:creator');
     Route::post('creator/dashboard/logout',[CreatorLoginController::class,'logout'])->name('creator.dashboard.logout');
-    // Add more creator-specific routes here
+   
+    Route::post('creator/dashboard/home',[GameController::class,'store'])->name('creator.game.store');
 });
 
 // Route::get('creator/dashboard/home',[CreatorHomeController::class,'index'])->name('creator.dashboard.home')->middleware('auth:creator');
