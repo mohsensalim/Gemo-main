@@ -1,0 +1,131 @@
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #748194;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #748194;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #748194;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #748194;
+}
+
+
+.Scontainer{
+   position: relative;
+	width: 100px;
+	height:auto;
+	padding-bottom: 5%;
+	left: calc(40% - 160px);
+   border-radius:15px 15px 15px 15px;
+}
+
+
+.c1{
+   box-shadow:0 0 10px grey;
+   background-color:white;
+   width:500px;
+   height: 880px;
+   margin-left: 50px;
+   margin-top: 50px;
+   display:inline-block;
+   border-radius:15px 15px 15px 15px;
+}
+
+#c1Creator{
+   height: 1320px;
+}
+
+.c11{
+   background-color: rgb(103, 103, 103);
+   background-size:500px 800px;
+   background-repeat: no-repeat;
+   width:500px;
+   height:200px;
+   display:inline-block;
+   position:absolute;
+   z-index:1;
+   border-radius:15px 15px 200px 200px;
+}
+.c11 img{
+   display: flex;
+   margin: auto;
+   width: 50%;
+   margin-top: 20px;
+
+
+}
+
+.c11  h3{
+width: 100%;
+   color: white;
+text-align: center;
+margin-top: 30px;
+font-weight: 800;
+
+}
+
+.c11 h3 span{
+
+   color: black;
+
+}
+
+.c11  h4{
+   width: 100%;
+      color: white;
+   text-align: center;
+   margin-top: 30px;
+   font-weight: 800;
+   
+   }
+   
+   .c11 h4 span{
+   
+      color: black;
+   
+   }
+
+
+
+
+.mainhead{
+   color:white;
+   font-size:24px;
+   text-align:center;
+   margin-top:50px;
+}
+.mainp{
+   color:white;
+   font-size:13px;
+   text-align:center;
+   margin-top:10px;
+}
+
+.btn{
+   font-weight: bold;
+   width: 230px;
+   margin: 0 35px 20px ;
+   height: 45px;
+   padding: 6px 15px;
+   border-radius: 5px;
+   outline: none;
+   border: none;
+   background: #EE9BA3;
+   color: white;
+   font-size: 14px;
+}
+
+ .card-body .registerform{
+   margin-top: 221px;
+}
+
+
+.RegisterBTN{
+   position: relative;
+   height: 41px;
+   top:20px;
+}
+

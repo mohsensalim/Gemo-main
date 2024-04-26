@@ -1,0 +1,298 @@
+.paypagecon{
+   
+    top: 60px;
+    position: relative;
+    padding-bottom: 258px;
+    width: 100%;
+    
+}
+.paycontainer{
+    width: 400px;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    
+}
+
+.paycontainer .title{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.paycontainer form .category{
+    margin-top: 10px;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+}
+
+.category label{
+    height: 145px;
+    padding: 20px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+}
+
+
+
+label .imgName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.imgName span{
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 72%;
+    transform: translateY(-72%);
+}
+
+.imgName .namebank{
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  top: 75%;
+  left: 54px;
+  transform: translateY(-72%);
+}
+
+.imgName .imgpaycontainer{
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 35%;
+    transform: translateY(-35%);
+}
+
+img{
+    width: 50px;
+    height: auto;
+}
+
+.mastercard img{
+    position: absolute;
+    width: 80px;
+    left: -30px;
+}
+
+.paypal img{
+    width: 80px;
+}
+
+
+/* -------------------Paypal------------------------ */
+
+
+.paypalcontainer {
+    max-width: 700px;
+    margin: 5rem auto 0;
+    padding: 3rem 5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px;
+    display: none;
+  }
+  
+  .paypalcontent,
+  form {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .paypalcontent {
+    margin-bottom: 5rem;
+  }
+  
+  .paypalcontainer .logo {
+    width: 12rem;
+    margin: auto;
+  }
+  
+  .paypalcontainer .input {
+    font-size: 1rem;
+    padding: 1rem;
+    outline: none;
+    border: 2px solid #64748b;
+    color: #64748b;
+    border-radius: 5px;
+  }
+  
+  .paypalcontainer .next__btn{
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .paypalcontainer .next__btn {
+    color: #ffffff;
+    background-color: #1397d7;
+  }
+  
+  .paypalcontainer .next__btn:hover {
+    background-color: #24397c;
+  }
+  
+  .paypalcontainer .signup__btn {
+    color: var(--text-dark);
+    background-color: #e2e8f0;
+  }
+  
+  .paypalcontainer .signup__btn:hover {
+    color: #ffffff;
+    background-color: #64748b;
+  }
+  
+
+  /* -----------BNK---------------------------------------- */
+
+
+  .bankcontainer {
+    max-width: 700px;
+    margin: 5rem auto 0;
+    padding: 3rem 5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px;
+    display: none;
+  }
+  
+  .bankcontent,
+  form {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .bankcontent {
+    margin-bottom: 5rem;
+  }
+  
+  .bankcontainer .logo {
+    width: 8rem;
+    margin: auto;
+  }
+  
+  .bankcontainer .input {
+    font-size: 1rem;
+    padding: 1rem;
+    outline: none;
+    border: 2px solid #64748b;
+    color: #64748b;
+    border-radius: 5px;
+  }
+  
+  .bankcontainer .next__btn{
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .bankcontainer .next__btn {
+    color: #ffffff;
+    background-color: #1397d7;
+  }
+  
+  .bankcontainer .next__btn:hover {
+    background-color: #24397c;
+  }
+  
+  .bankcontainer .signup__btn {
+    color: var(--text-dark);
+    background-color: #e2e8f0;
+  }
+  
+  .bankcontainer .signup__btn:hover {
+    color: #ffffff;
+    background-color: #64748b;
+  }
+
+  .active{
+    display: block;
+  }
+/* --------------------------------------------PayInfo------------------------------------------------------------- */
+
+    
+.payinfocontainer {
+  max-width: 700px;
+  margin: auto;
+  position: relative;
+  top: 30px;
+  padding: 3rem 5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 5px;
+  display: none;
+}
+
+.payinfocontent,
+form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.payinfocontent {
+  margin-bottom: 5rem;
+}
+
+.payinfocontainer .logo {
+  width: 8rem;
+  margin: auto;
+}
+
+.payinfocontainer .input {
+  font-size: 1rem;
+  padding: 1rem;
+  outline: none;
+  border: 2px solid #64748b;
+  color: #64748b;
+  border-radius: 5px;
+}
+
+.payinfocontainer .next__btn{
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.payinfocontainer .next__btn {
+  color: #ffffff;
+  background-color: #1397d7;
+}
+
+.payinfocontainer .next__btn:hover {
+  background-color: #24397c;
+}
+
+.payinfocontainer .signup__btn {
+  color: var(--text-dark);
+  background-color: #e2e8f0;
+}
+
+.payinfocontainer .signup__btn:hover {
+  color: #ffffff;
+  background-color: #64748b;
+}

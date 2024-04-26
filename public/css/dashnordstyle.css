@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.content-area{
+
+    height: calc(100vh - 56px);
+    display: flex;
+    background-color: #f9f9f9;
+}
+
+.content-area aside{
+
+    height: 100%;
+    width: 280px;
+    margin-top: 15px;
+    background-color: white;
+    overflow-y: auto;
+}
+.content-area nav{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    padding-right: 15px;
+    padding-left: 10px;
+
+}
+
+.content-area .nav-link{
+
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.content-area .nav-link:hover{
+
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content-area .nav-link span{
+
+    margin-left: 24px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2em;
+    color: #030303;
+}
+
+.content-area .active{
+
+    background-color: #e5e5e5;
+}
+
+.content-area #active-span{
+
+    font-weight: 550;
+
+}
+.content-area main{
+
+    width: 100%;
+    height: 100%;
+    padding: 35px 15px;
+    border-top: 1px solid #ddd;
+    overflow-y: auto;
+    
+}
+.content-area.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content-area main .publishcontainer form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: auto; /* Ajout pour centrer le formulaire */
+    /* display: none; */
+}
+
+.content-area main label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.support_container{
+  position: relative;
+  top:20px;
+}
+
+.support_container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.support_container input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.content-area main input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#contactsubmit
+{
+  background-color: #4caf50;
+  color: #313131;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 17px;
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.content-area main button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.content-area button:hover {
+    background-color: #45a049;
+}
+
+.content-area textarea{
+    margin-bottom: 15px;
+}
+
+  .containerCat{
+    position: relative;
+    width: 60%;
+    height: 130px;
+    top:100px;
+    left: 20%;
+    margin-top: 10px;
+    transition: 0.3s;
+    display: none;
+  }
+ 
+  .containerCat:hover{
+    transform: scale(1.1);
+  }
+  
+  .containerCat .sub_container{
+    background: linear-gradient(to right, #0e77b8 0%, #04d1fa 100%);
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+    }
+    .sub_container .image{
+      width: 230px;
+      height: 118px;
+      position: absolute;
+      left: 6px;
+    }
+
+    .sub_container .image img{
+      width: 100%;
+      height: 100%;
+    }
+
+    .sub_container h3{
+      font-size: 28px;
+      color: #e6e6e6;
+      left: 260px;
+      top: 5px;
+      padding: 0;
+      position: absolute;
+    }
+  
+    .sub_container .categories h1{
+      font-size: 15px;
+      position: absolute;
+      background-color: #686969;
+      color: #e6e6e6;
+      letter-spacing: 2px;
+      border-radius: 6px;
+      padding: 3px;
+      opacity: 75%;
+      left: 260px;
+      top: 50px;
+    }
+
+    .sub_container .time_system{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 260px;
+      top: 87px;
+    }
+    .sub_container .time_system h1{
+      margin-right: 8px;
+    }
+    .sub_container .time_system i{
+      margin-right: 8px;
+    }
+  
+
+    .sub_container .time_system h1{
+      font-size: 15px;
+      color: #e8e8e8;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .sub_container .btns{
+      
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+    .sub_container .btns button{
+      padding: 10px;
+      border-radius: 4px;
+      border-color: transparent;
+      margin-right: 8px;
+      cursor: pointer;
+      transition: 0.5s ease;
+    }
+
+    .sub_container .btns #card{
+      background-color: #0f75c9;
+      
+    }
+    .sub_container .btns #buy{
+      background-color: #09db36;
+      width: 60px;
+    }
+
+    .sub_container .btns a{
+      color: #e6e6e6;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .sub_container .btns #buy:hover{
+      background-color: transparent;
+      border: 2px solid #e6e6e6;
+    }
+    .sub_container .btns #card:hover{
+      background-color: transparent;
+      border: 2px solid #e6e6e6;
+    }
+
+    .game_users{
+      position: relative;
+      left:220px;
+      bottom: 10px;
+      color: #e6e6e6;
+    }
+
+
+
+    .payment_container{
+        display: none;
+    }
+
+    table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        table-layout: fixed;
+      }
+      
+      table caption {
+        font-size: 1.5em;
+        margin: .5em 0 .75em;
+      }
+      
+      table tr {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        padding: .35em;
+      }
+      
+      table th,
+      table td {
+        padding: .625em;
+        text-align: center;
+      }
+      
+      table th {
+        font-size: .85em;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+      
+      @media screen and (max-width: 600px) {
+        table {
+          border: 0;
+        }
+      
+        table caption {
+          font-size: 1.3em;
+        }
+        
+        table thead {
+          border: none;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px;
+        }
+        
+        table tr {
+          border-bottom: 3px solid #ddd;
+          display: block;
+          margin-bottom: .625em;
+        }
+        
+        table td {
+          border-bottom: 1px solid #ddd;
+          display: block;
+          font-size: .8em;
+          text-align: right;
+        }
+        
+        table td::before {
+          /*
+          * aria-label has no advantage, it won't be read inside a table
+          content: attr(aria-label);
+          */
+          content: attr(data-label);
+          float: left;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+        
+        table td:last-child {
+          border-bottom: 0;
+        }
+      }
+
+      .payment_container  a{
+        color: #e6e6e6;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .payment_container button:hover{
+        background-color:#818181 ;
+        border: 2px solid #313131;
+      }
+      
+
+    main .support_container form{
+     background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: auto;
+      }
+
+      .publishcontainer h6{
+        margin-top: -13px;
+        margin-bottom: 15px;
+
+      }
+
+      .noappaddedcontainer{
+        position: relative;
+
+        width: 100%;
+        height: fit-content;
+       text-align: center;
+    height: 460px;
+    display: none;
+      }
+
+      .noappadded{
+        width: 300px;
+        height: 300px;
+        background-color: #8181810d;
+        border-radius: 50px;
+        position: absolute;
+        left:350px;
+        top: 150px;
+  
+      }
+      .noappadded h3{
+        position: absolute;
+        top: 130px;
+        left: 65px;
+        color: #777575;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        z-index: 10;
+       
+      }
