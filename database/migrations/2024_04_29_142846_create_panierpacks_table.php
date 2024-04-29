@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_panier_packs', function (Blueprint $table) {
+        Schema::create('panierpacks', function (Blueprint $table) {
             $table->bigInteger('Id_PP')->primary();
-            $table->BigInteger('id')->nullable();
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->nullable();
             $table->BigInteger('Id_Pack')->nullable();
-            $table->foreign('Id_Pack')->references('Id_Pack')->on('packs')->onDelete('cascade');
+            $table->foreign('Id_Pack')->references('Id_Pack')->on('packs')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_panier_packs');
+        Schema::dropIfExists('panierpacks');
     }
 };

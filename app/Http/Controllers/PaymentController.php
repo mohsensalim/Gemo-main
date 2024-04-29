@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Omnipay\Omnipay;
+use App\Models\Panierpack;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -74,7 +76,15 @@ class PaymentController extends Controller
             if ($response->isSuccessful()) {
 
                 $arr = $response->getData();
-                
+
+
+                $lastPanierpack = Panierpack::latest()->first();
+                $newId_PP = $lastPanierpack ? $lastPanierpack->Id_PP + 1 : 1;
+                Panierpack::create([
+                    'Id_PP'=>$newId_PP,
+                    'user_id'=>Auth::guard('web')->id(),
+
+                ]);
                 
 
                 return redirect()->route('packs')->with('success', 'Payment is Successful. Your Transaction Id is: ' . $arr['id']);

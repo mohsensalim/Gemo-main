@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('ECIN', 20)->nullable();
             $table->BigInteger('id')->nullable();
             $table->BigInteger('ID_Pack')->nullable();
-            $table->foreign('id')->references('id')->on('creators')->onDelete('cascade');
+            $table->foreign('ID_Pack')->references('id')->on('creators')->onDelete('cascade');
             // $table->foreign('ID_Pack')->references('id')->on('packs')->onDelete('cascade');
             $table->timestamps();
         });

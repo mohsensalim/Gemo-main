@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_packs', function (Blueprint $table) {
+        Schema::create('packs', function (Blueprint $table) {
+           
             $table->bigInteger('Id_Pack')->primary();
-            $table->string('Nom_Pack');
-            $table->string('Etat_Pack');
-            $table->float('Prix_Pack');
-            $table->bigInteger('Pack_Coins');
+            $table->string('Nom_Pack')->nullable();
+            $table->string('Etat_Pack')->nullable();
+            $table->float('Prix_Pack')->nullable();
+            $table->bigInteger('Pack_Coins')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_packs');
+        Schema::dropIfExists('packs');
     }
 };

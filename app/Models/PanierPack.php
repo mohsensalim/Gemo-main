@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PanierPack extends Model
+class Panierpack extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'Id_PP',
+        'user_id',
+        'Id_Pack',
+    ];
+
 }
