@@ -104,7 +104,7 @@ nav .container form button:hover{
 .coindiv{
   position: relative;
   background-color: rgb(127, 127, 127);
-  width: 200px;
+  width: 150px;
   height: 30px;
   right: 20px;
   border-radius: 15px;
@@ -136,7 +136,7 @@ nav .container form button:hover{
 
 .coindiv .notguestaddimg img{
   position: relative;
-  left: 100px;
+  left: 56px;
   width: 30px;
   border-radius: 15px;
 }
@@ -175,7 +175,7 @@ position: relative;
 
 
 .cartTab{
-  width: 400px;
+  width: 350px;
   background-color: #353432;
   color: #eee;
   position: fixed;

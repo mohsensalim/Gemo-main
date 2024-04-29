@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
@@ -64,3 +65,8 @@ Auth::routes();
 
 
 Route::get('/GemoChat', [App\Http\Controllers\HomeController::class, 'index'])->name('Chat');
+
+Route::post('pay',[PaymentController::class,'pay'])->name('payment');
+
+Route::get('success', [PaymentController::class, 'success']);
+Route::get('error', [PaymentController::class, 'error']);
