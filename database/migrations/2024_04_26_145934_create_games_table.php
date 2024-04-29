@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('Title')->unique();
             $table->string('Description')->nullable();
             $table->string('Category')->nullable();
-            $table->integer('Jeux_Prix')->nullable();
+            $table->bigInteger('Jeux_Prix')->nullable();
             $table->date('date_publishing')->nullable();
             $table->longText('Main_Picture')->charset('binary')->nullable(); // LONGBLOB
             $table->longText('Screen1')->charset('binary')->nullable(); // LONGBLOB
