@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Creator;
 
 use App\Models\game;
+use App\Models\paniergame;
 use Illuminate\Http\Request;
 use App\Models\Creatorpaiment;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,11 @@ class CreatorHomeController extends Controller
 
        $CreatorGames = game::where('id', Auth::guard('creator')->id())->get();
        $creatorpayinfo= Creatorpaiment::where('id', Auth::guard('creator')->id())->first();
+       $CreatorInstalls = paniergame::where('IDG',$CreatorGames->pluck('IDG'))->count();
        $creatorpaymenthistory = Creatorpaiment::where('id', Auth::guard('creator')->id())->get();
-        return view('Creator.home',['creatorpayinfo'=>$creatorpayinfo, 'creatorpaymenthistory'=>$creatorpaymenthistory , 'CreatorGames'=>$CreatorGames]);
+
+       
+        return view('Creator.home',['creatorpayinfo'=>$creatorpayinfo, 'creatorpaymenthistory'=>$creatorpaymenthistory , 'CreatorGames'=>$CreatorGames,
+        'CreatorInstalls'=>$CreatorInstalls]);
     }
 }

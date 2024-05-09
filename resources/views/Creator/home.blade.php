@@ -133,7 +133,7 @@
               <h1>{{$CreatorGame->Category}}</h1>
           </div>
           <div class="game_users">
-           <h5>1000 User</h5>
+           <h5>{{$CreatorInstalls}} User</h5>
           </div>
           <div class="time_system">
               <h1>{{ $CreatorGame->created_at->format('M j, Y') }}</h1>
