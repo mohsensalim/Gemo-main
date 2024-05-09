@@ -3,17 +3,18 @@
 
 @section('content')
 
-
+@if(isset($game))
 <div class="DetailsContaier">
+	
     <div class="imgs">
 		<div class="Mainimage">
-			<img src="images/5.jpg" alt="">
+		<img src="data:image/jpeg;base64,{{ base64_encode($game->Main_Picture) }}" >
 		</div>
 
 		<div class="images">
-			<img src="images/S1.png" alt="">
-			<img src="images/S2.png" alt="">
-			<img src="images/5.jpg" alt="">
+		<img src="data:image/jpeg;base64,{{ base64_encode($game->Screen1) }}" >
+		<img src="data:image/jpeg;base64,{{ base64_encode($game->Screen2) }}" >
+		<img src="data:image/jpeg;base64,{{ base64_encode($game->Screen3) }}" >
 		</div>
         </div>
 
@@ -21,25 +22,33 @@
 		<div class="details">
 
 		<div class="title">
-			<h1>FiFA 2021</h1>
+			<h1>{{$game->Title}}</h1>
+			<h1><span style="color:#0ebfe8;font-size: 30px;font-weight: bold;">{{$game->Jeux_Prix}} <span style="font-size: 20px; font-weight: bold;">GCOIN</span></span></h1>
 		</div>
 		
 
 	
 
 		<div class="description">
-			<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, aliquid in aliquam dolorem harum est minima provident dolores fugit voluptate exercitationem voluptates vitae tempore, sapiente cumque deserunt optio repellat recusandae.</p>
+			<p> {{$game->Description}}</p>
 		</div>
 
 		
 			<div class="Game_Buttons">
-                <button class="Buy"><a href="#">Buy Now</a></button>
+			<form action="{{route('buygame', $game->IDG)}}" method="post">
+				@csrf
+                <button class="Buy" type="submit">Buy Now</button>
                 <button class="Add"><a href="#">Add To Card</a></button>
-             
+              </form>
 
 	</div>
 </div>
+@else
+<div style="height:100vh;">
 
+</div>
+
+@endif
 
 
 @endsection

@@ -2,6 +2,17 @@
 @section('content')
 
 <div id="main">
+@if(session('error'))
+    <div class="alert alert-danger" style="width:100%; margin-top:30px;">
+        {{ session('error') }}
+    </div>
+    @endif
+    @if(session('success'))
+    <div class="alert alert-success" style="width:100%; margin-top:30px;">
+        {{ session('success') }}
+    </div>
+    @endif
+
       <div class="containere">
           <div class="slide">
               <div class="item"
@@ -79,29 +90,32 @@
 
 
   <section class="CardContainer">
-
+    @foreach($games as $game)
+    @if($game->etat_jeux == 'actif')
         <div class="videos-container">
         <div class="video">
           <div class="thumbnail">
-            <img src="Images/5.jpg">
+          <img src="data:image/jpeg;base64,{{ base64_encode($game->Main_Picture) }}" >
           </div>
           <div class="video-details">
             <div class="title">
-              <a href="" class="video-title">
-                FIFA 2021
+              <a href="{{route('gamedetails', $game->IDG)}}" class="video-title">
+              {{$game->Title}} : <span style="color:#0ebfe8;font-size: 20px;font-weight: bold;">{{$game->Jeux_Prix}} <span style="font-size: 17px; font-weight: bold;">GCOIN</span></span>
               </a>
               
               <div class="Game_Buttons">
-                <button class="Buy"><a href="#">Buy Now</a></button>
+              
+                <button class="Buy" href="{{route('gamedetails', $game->IDG)}}"><a href="{{route('gamedetails', $game->IDG)}}" type="submit">Buy Now</a></button>
                 <button class="Add"><a href="#">Add To Card</a></button>
+              
               </div>
             </div>
           </div>
 
         </div>
 </div>
-
-
+@endif
+@endforeach
 
 
 <div class="videos-container">
@@ -246,6 +260,8 @@ function next1(){
 }
 
 setInterval(next1,5000);
+
+
 </script>
 
 @endsection

@@ -5,35 +5,35 @@
 <div class="content-area">
     <aside>
         <nav>
-          <a href="" class="nav-link active" data-target="dashboardContainer">
+          <button class="nav-link active" data-target="dashboardContainer" onclick="show('.containerDash')"> 
             <i class="material-icons">dashboard</i>
             <span id="active-span">Dashboard</span>
-          </a>
+            </button>
 
-          <a href="" class="nav-link"  data-target="publishContainer">
-            <i class="material-icons">publish</i>
-            <span id="active-span">Publish</span>
-          </a>
+            <button class="nav-link" data-target="publishContainer" onclick="show('.publishcontainer')">
+  <i class="material-icons">publish</i>
+  <span id="active-span">Publish</span>
+</button>
 
-          <a href="" class="nav-link" data-target="paymentContainer" >
-            <i class="material-icons">payments</i>
-            <span id="active-span">Payments</span>
-          </a>
+<button class="nav-link" data-target="paymentContainer" onclick="show('.payment_container')">
+  <i class="material-icons">payments</i>
+  <span id="active-span">Payments</span>
+</button>
 
-          <a href="" class="nav-link" data-target="paymentContainer" >
-            <i class="material-icons">info</i>
-            <span id="active-span">Pay Info</span>
-          </a>
+<button class="nav-link" data-target="paymentContainer" onclick="show('.payinfocontainer')">
+  <i class="material-icons">info</i>
+  <span id="active-span">Pay Info</span>
+</button>
 
-          <a href="" class="nav-link" data-target="supportContainer">
-            <i class="material-icons">support_agent</i>
-            <span id="active-span">Support</span>
-          </a>
+<button class="nav-link" data-target="supportContainer">
+  <i class="material-icons">support_agent</i>
+  <span id="active-span">Support</span>
+</button>
 
-          <a href="" class="nav-link" data-target="privacyContainer">
-            <i class="material-icons">verified_user</i>
-            <span id="active-span">Privacy</span>
-          </a>
+<button class="nav-link" data-target="privacyContainer">
+  <i class="material-icons">verified_user</i>
+  <span id="active-span">Privacy</span>
+</button>
 
 
         </nav>
@@ -98,7 +98,7 @@
         @enderror
 
         <Label>Upload Game</Label>
-        <input type="url" id="download_path" name="download_path" placeholder="Game Download Link">
+        <input type="url" id="download_path" name="download_path" placeholder="Game Download Link" >
         @error('download_path')
             <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -121,21 +121,25 @@
 </div>
 
 <!-- //---------------------------------Dashboard Default------------------------------------// -->
-<div class="containerCat content-section" id="dashboardContainer">
- 
+<div class="containerDash content-section">
+  
+  @foreach($CreatorGames as $CreatorGame)
+  
+<div class="containerCat" id="dashboardContainer">
+         
           <div class="sub_container">
-          <h3>FIFA 2024</h3>
+          <h3>{{$CreatorGame->Title}}</h3>
           <div class="categories">
-              <h1>FPS</h1>
+              <h1>{{$CreatorGame->Category}}</h1>
           </div>
           <div class="game_users">
            <h5>1000 User</h5>
           </div>
           <div class="time_system">
-              <h1>Jul 8.2013</h1>
+              <h1>{{ $CreatorGame->created_at->format('M j, Y') }}</h1>
           </div>
           <div class="image">
-              <img src="{{ asset('Images/5.jpg') }}">
+          <img src="data:image/jpeg;base64,{{ base64_encode($CreatorGame->Main_Picture) }}" >
           </div>
           <div class="btns">
               <button id="card"><a href="#">Unpublish</a></button>
@@ -143,6 +147,11 @@
           </div>
 
       </div>
+      
+      </div>
+      
+      @endforeach
+
 
       </div>
     <!-- ---------------------------------No Application Added-------------------------------------->
@@ -175,10 +184,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
             
+            @foreach($creatorpaymenthistory as $creatorpayment)
+            <tr>
+              @if($creatorpayment->Date_Paiment==null)
+            <td scope="col">Not Apprroved Yet</td>
+            @else
+            <td scope="col">{{$creatorpayment->Date_Paiment}}</td>
+            @endif
+              <td scope="col">{{$creatorpayment->Amount}}</td>
+              <td scope="col">{{$creatorpayment->Mode_Paiment}}</td>
+              <td scope="col">{{$creatorpayment->Etat_Paiment}}</td>
 
             </tr>
+            @endforeach
           </tbody>
         </table>
 
@@ -187,11 +206,11 @@
 
 <!----------------------------------------------PaymentInfo--------------------------------------------------- -->
 
-<div class="payinfocontainer">
+<div class="payinfocontainer content-section">
       <div class="payinfocontent">
         <form action="">
-          <input type="text" name="modepaiment" class="input" placeholder="Mode Paiment"/>
-          <input type="text" name="identifier" class="input" placeholder="Identifier"/>
+          <input type="text" name="modepaiment" class="input" placeholder="Mode Paiment" value="{{$creatorpayinfo->Mode_Paiment}}"/>
+          <input type="text" name="identifier" class="input" placeholder="Identifier" value="{{$creatorpayinfo->Identifiant}}"/>
           <button class="next__btn" type="submit">Next</button>
         </form>
       </div>
@@ -212,33 +231,23 @@
 
 @section('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    let CreatorDahs = document.querySelector(".containerAsideCreator");
-    if (CreatorDahs) {
-        CreatorDahs.style.display = 'none';
-    }
-});
 
 
-//         document.addEventListener('DOMContentLoaded', function() {
-//     const navLinks = document.querySelectorAll('.nav-link');
-//     const contentSections = document.querySelectorAll('.content-section');
 
-//     navLinks.forEach(link => {
-//         link.addEventListener('click', function(event) {
-//             event.preventDefault();
-//             const targetId = this.getAttribute('data-target');
+function show(cc){
+            let C = document.querySelectorAll('.content-section');
+            let CCC = document.querySelector(cc);
 
-//             // Hide all content sections
-//             contentSections.forEach(section => {
-//                 section.style.display = 'none';
-//             });
+      for(var i=0;i<C.length;i++)
+    {
+        C[i].style.display = 'none';
+      }
 
-//             // Show the selected content section
-//             document.querySelector(`.${targetId}`).style.display = 'block';
-//         });
-//     });
-// });
+      CCC.style.display = 'block';
+          }
 
+          
+
+        
 </script>
 @endsection

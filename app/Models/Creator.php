@@ -31,6 +31,7 @@ class Creator extends Authenticatable
         'City',
         'Etat',
         'password',
+        'Coins',
     ];
 
     /**

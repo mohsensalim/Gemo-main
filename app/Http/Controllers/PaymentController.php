@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pack;
 use App\Models\User;
 use Omnipay\Omnipay;
 use App\Models\Panierpack;
@@ -13,7 +14,7 @@ class PaymentController extends Controller
     //
 
     private $geteway;
-
+    private $pack;
 
 
     public function __construct() {
@@ -25,16 +26,18 @@ class PaymentController extends Controller
     }
 
 
-    public function pay(Request $request)
+    public function pay(Request $request,$packid)
     {
+       
+      
         try {
 
             $response= $this->geteway->purchase(array(
                 'amount' => $request->amount,
                 'currency' => env('PAYPAL_CURRENCY'),
-                'returnUrl' => url('success'),
+                'returnUrl' => url('success/' . $packid),
                 'cancelUrl' => url('error')
-
+                
 
             ))->send();
 
@@ -63,8 +66,9 @@ class PaymentController extends Controller
 
     }
 
-    public function success(Request $request)
+    public function success(Request $request,$packid)
     {
+
         if ($request->input('paymentId') && $request->input('PayerID')) {
             $transaction = $this->geteway->completePurchase(array(
                 'payer_id' => $request->input('PayerID'),
@@ -77,7 +81,7 @@ class PaymentController extends Controller
 
                 $arr = $response->getData();
 
-
+             
                 $lastPanierpack = Panierpack::latest()->first();
                 $newId_PP = $lastPanierpack ? $lastPanierpack->Id_PP + 1 : 1;
                 Panierpack::create([
@@ -85,8 +89,18 @@ class PaymentController extends Controller
                     'user_id'=>Auth::guard('web')->id(),
 
                 ]);
+                $pack=Pack::where('Id_Pack', $packid)->first();
+                $packcoins=$pack->Pack_Coins;
                 
+                $user = User::find(Auth::guard('web')->id());
+                $usercoins=$user->Coins;
+                $newusercoins=$usercoins + $packcoins;
+                $user->update([
+            
+                        'Coins'=> $newusercoins,
 
+                                ]);
+        
                 return redirect()->route('packs')->with('success', 'Payment is Successful. Your Transaction Id is: ' . $arr['id']);
 
             }

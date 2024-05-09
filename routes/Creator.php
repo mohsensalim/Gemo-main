@@ -33,9 +33,9 @@ Route::get('creator/dashboard/register',[CreatorRegisterController::class,'regis
 
 Route::post('creator/dashboard/register',[CreatorRegisterController::class,'store'])->name('creator.dashboard.store');
 
-Route::get('/paymentcreator', function () {
-    return view('PaymentCreator');
-})->name('paymentcreator');
+Route::get('/paymentcreator/{regestiredid}', [CreatorRegisterController::class,'getpaymentpage'])->name('paymentcreator');
+
+Route::post('/paymentcreator/{regestiredid}', [CreatorRegisterController::class,'StorePaymentInfo'])->name('paymentcreator');
 
 
 Route::get('/contact', function () {

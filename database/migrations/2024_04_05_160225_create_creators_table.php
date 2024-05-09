@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('Etat')->nullable();
             $table->string('password');
             $table->timestamps();
+            $table->bigInteger('Coins')->nullable();
         });
     }
 

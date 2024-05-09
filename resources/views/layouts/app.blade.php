@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/dashnordstyle.css') }}">
     <link rel="stylesheet" href="styleLog.css">
     <link rel="stylesheet" href="styleReg.css">
-    <link rel="stylesheet" href="styleDetails.css">
+    <link rel="stylesheet" href="{{ asset('styleDetails.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -74,9 +74,9 @@
         <h5 class="guesth5">1000</h5> -->
     @else
     <div class="coindiv">
-    <img src="Images/GCOIN.png" alt="">
-        <a href="" class="notguestaddimg"><img src="Images/add.png" alt=""></a>
-        <h5 class="notguesth5">1000</h5>
+    <img  src="{{asset('Images/GCOIN.png')}}" alt="" >
+        <a  class="notguestaddimg"><img src="{{asset('Images/add.png')}}" alt="" onclick="redirect()" style="cursor:pointer;"></a>
+        <h5 class="notguesth5" >{{ Auth::user()->Coins }}</h5>
     @endguest
    
         </div>
@@ -138,6 +138,19 @@
         
         <div class="containerAside">
         <nav>
+        @guest
+          <div class="side_navbar">
+            <a href="{{route('Main')}}" class="active">Magasin</a>
+            <a href="{{route('Chat')}}">Chat</a>
+            <a href="{{route('login')}}">Pakcs</a>        
+
+            <div class="links">
+              <a href="{{route('creator.dashboard.login')}}" class="Creator">Creator Mode</a>
+            </div>
+          </div>
+
+          @else
+
           <div class="side_navbar">
             <a href="{{route('Main')}}" class="active">Magasin</a>
             <a href="{{route('Chat')}}">Chat</a>
@@ -149,6 +162,7 @@
               <a href="{{route('creator.dashboard.login')}}" class="Creator">Creator Mode</a>
             </div>
           </div>
+          @endguest
         </nav>
         <div class="main-body">
           
@@ -178,7 +192,7 @@
        
        <div class="mb-4">
   <label for="ModeFriendsPin" class="form-label">Mode Friends Pin</label>
-  <input type="text" class="form-control" id="ModeFriendsPin" readonly value="Nod Tsalli">
+  <input type="text" class="form-control" id="ModeFriendsPin" readonly value="">
 </div>
         <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="EtatModeFriends">
@@ -278,7 +292,12 @@ login.addEventListener('click',function HideLogin(event) {
 });
 
         
+function redirect()
+{
 
+    window.location.href='{{route('packs')}}';
+
+}
        
     
 </script>

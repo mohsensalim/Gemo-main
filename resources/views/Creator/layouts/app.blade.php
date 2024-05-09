@@ -150,24 +150,27 @@
 //         }
 
 //        scrollDown();
+document.addEventListener('DOMContentLoaded', function() {
+   
+
+    function show(container, event) {
+        event.preventDefault();
+    let contentSections = document.querySelectorAll('.content-section');
+    let c = document.querySelector(container);
     
-        let iconCart = document.querySelector('.icon-cart');
-        let body = document.querySelector('body');
-        let closeCart = document.querySelector('.close');
-        
+    // Loop through each content section
+    contentSections.forEach(section => {
+        // Hide the content section
+        section.style.display = "none";
+    });
 
-        iconCart.addEventListener('click', () => {
-            body.classList.toggle('showCart');
+    // Show the specified container
+    c.style.display = "block";
+}
 
-        });
+   
 
-        closeCart.addEventListener('click', () => {
-            body.classList.toggle('showCart');
-            
-        });
-
-        
-
+});
        
     
 </script>

@@ -26,4 +26,6 @@ class game extends Model
         'id',
         'ID_Pack',
     ];
+
+
 }

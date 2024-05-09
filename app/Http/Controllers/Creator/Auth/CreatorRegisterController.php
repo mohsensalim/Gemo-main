@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Creator\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Creator;
+use Illuminate\Http\Request;
+use App\Models\Creatorpaiment;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+
 class CreatorRegisterController extends Controller
 {
     //
@@ -17,7 +19,7 @@ class CreatorRegisterController extends Controller
 
 
     public function store(Request $request){
-
+        
         $lastCreator = Creator::latest()->first();
         $newid = $lastCreator ? $lastCreator->id + 1 : 1;
     
@@ -33,8 +35,8 @@ class CreatorRegisterController extends Controller
             'genre' => ['required', 'string'],
             'city' => ['required', 'string'],
             'date_naissance' => ['required', 'date','before_or_equal:' . now()->subYears(18)->format('Y-m-d')],
-            'telephone' => ['required', 'numeric'],
-            'cin' => ['required', 'string'],
+            'telephone' => ['required', 'numeric','unique:creators,Telephone'],
+            'cin' => ['required', 'string', 'unique:creators,CCIN'],
             'cin_picture'=>['required', 'image', 'mimes:jpeg,png,jpg'],
             "password"=>['required','string','confirmed'],
             "password_confirmation"=>['required','string'],
@@ -43,13 +45,68 @@ class CreatorRegisterController extends Controller
         $imagePath = $request->cin_picture->getPathname(); // Get the temporary path of the uploaded file
         $cin_picture = file_get_contents($imagePath); // Read the contents of the uploaded file
 
-        $data=$request->except(['password_confirmation','_token','cin_picture']);
-        $data['password'] = Hash::make($request->password);
-      $data['Cin_Picture']=  $cin_picture;
-        Creator::create($data);
+     
+       Creator::create([
+
+        'id'=>$newid,
+        'name'=>$request->name,
+        'Prenom'=>$request->prenom,
+        'email'=>$request->email,
+        'Cin_Picture'=>$cin_picture,
+        'Date_Naissance'=>$request->date_naissance,
+        'Genre'=>$request->genre,
+        'CCIN'=>$request->cin,
+        'Studio_Nom'=>$request->studio_nom,
+        'Telephone'=>$request->telephone,
+        'City'=>$request->city,
+        'Etat'=>"inactif",
+        'password'=>Hash::make($request->password),
+
+    ]);
     
-       
-        return redirect()->route('creator.dashboard.login');
+        $creatorId = $newid;
+        return redirect()->route('paymentcreator', ['regestiredid' => $creatorId]);
+
+    }
+
+    public function getpaymentpage($creatorid)
+    {
+       return view('PaymentCreator', ['creatorid' => $creatorid]);
+
+    }
+
+    public function StorePaymentInfo(Request $request)
+    {
+        $creatorId = $request->route('regestiredid');
+        if($request->P == "Paypal")
+        {
+            $request->validate([
+
+                "paypalemail"=>['required','string','unique:creators,email'],
+                
+            ]);
+
+            $lastCreatorPaiment = Creatorpaiment::latest()->first();
+
+                $newIDCP = $lastCreatorPaiment ? $lastCreatorPaiment->ID_CP + 1 : 1;
+               
+                        Creatorpaiment::create([
+
+                            'ID_CP'=>$newIDCP,
+                            'Mode_Paiment'=>'Paypal', 
+                            'Identifiant'=>$request->paypalemail, 	 	
+                            'Etat_Paiment'=>'inactif',
+                            'id'=>$creatorId,
+                        ]);
+        }
+
+        if($request->B == "Bank")
+        {
+            echo 'Bank';
+        }
+
+                
+
     }
 
 

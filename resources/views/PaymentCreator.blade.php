@@ -10,7 +10,7 @@
             <h4>Select a <span style="color: #00b7ff">Payment</span> method</h4>
         </div>
 
-        <form action="#">
+        <form action="#" >
            
             <div class="category">
                 
@@ -46,8 +46,10 @@
     <div class="paypalcontainer">
       <div class="paypalcontent">
         <img src="Images/paypal.png" alt="paypal" class="logo" />
-        <form action="">
-          <input type="text" class="input" placeholder="Email or mobile number"/>
+        <form action="{{ route('paymentcreator', ['regestiredid' => $creatorid]) }}" method="post">
+            @csrf
+            <input type="text" hidden value="Paypal" name="P">
+          <input type="email" class="input" placeholder="Email" name="paypalemail"/>
           <button class="next__btn" type="submit">Next</button>
         </form>
       </div> 
@@ -56,7 +58,9 @@
     <div class="bankcontainer">
       <div class="bankcontent">
         <img src="Images/bnk.png" alt="bank" class="logo" />
-        <form action="">
+        <form action="" method="post">
+        @csrf
+        <input type="text" hidden value="Bank" name="B">
           <input type="text" name="bankname" class="input" placeholder="Bank Name"/>
           <input type="text" name="rip" class="input" placeholder="Rip"/>
           <button class="next__btn" type="submit">Next</button>

@@ -30,6 +30,7 @@ class User extends Authenticatable
         'Etat_Mode_Friend',
         'Pin_Mode_Friend',
         'Etat',
+        'Coins',
 
     ];
 

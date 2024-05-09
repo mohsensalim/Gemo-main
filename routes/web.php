@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\PackController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Auth\LoginController;
 /*
@@ -15,23 +18,21 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('MainPage');
-})->name('Main');
+
+Route::get('/', [MainController::class, 'index'])->name('Main');
+
 
 // Contact MA3NDOCH
 Route::get('/contact', function () {
     return view('Contact'); 
 })->name('contact');
 
-Route::get('/packs', function () {
-    return view('packs');
-})->name('packs');
 
-// Library MA3NDOCH
-Route::get('/library', function () {
-    return view('library');
-})->name('library');
+Route::get('/packs', [PackController::class, 'index'])->name('packs');
+
+
+Route::get('/library', [GameController::class, 'indexlibrary'])->name('library');
+
 
 // Categories MA3NDOCH
 Route::get('/Categories', function () {
@@ -55,18 +56,21 @@ Route::get('/CreatorRegister', function () {
 Route::get('/gamedetails', function () {
     return view('gamedetails');
 })->name('gamedetails');
-
+Route::get('/gamedetails/{gameid}', [GameController::class, 'show'])->name('gamedetails');
 
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
+
+Route::post('/buygame/{gameid}', [GameController::class, 'BuyGame'])->name('buygame');
 
 Auth::routes();
 
 
 Route::get('/GemoChat', [App\Http\Controllers\HomeController::class, 'index'])->name('Chat');
 
-Route::post('pay',[PaymentController::class,'pay'])->name('payment');
+Route::post('pay/{pack}',[PaymentController::class,'pay'])->name('payment');
 
-Route::get('success', [PaymentController::class, 'success']);
+Route::get('success/{packid}', [PaymentController::class, 'success'])->name('payment.success');
+
 Route::get('error', [PaymentController::class, 'error']);

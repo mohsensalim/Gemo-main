@@ -409,7 +409,8 @@ margin-top: 20px;
   background-color:#0ee85a;
 }
 
-.Game_Buttons .Download{
+
+.Game_Buttons .Download {
 
   background-color:#0ee85a;
   position: relative;
@@ -448,11 +449,15 @@ margin-top: 20px;
 
 }
 
-.Game_Buttons button a{
+.Game_Buttons button {
 font-weight:700;
 color: white;
 }
-
+.Game_Buttons button a {
+  font-weight:700;
+  color: white;
+  }
+  
 
 
 /* slider */

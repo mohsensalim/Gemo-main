@@ -17,23 +17,28 @@
     </div>
     @endif
     
+
+    @foreach($packs as $pack)
+    @if($pack->Etat_Pack == 'actif')
 <div class="videos-container">
 <div class="pack">
   <div class="thumbnail">
-    <img src="Images/Epic.png">
+    <img src="data:image/jpeg;base64,{{ base64_encode($pack->Pack_Picture) }}">
   </div>
 
   <div class="video-details">
     <div class="title">
       <a href="" class="video-title">
-        FIFA 2022
+        {{$pack->Nom_Pack}}
+        <span style="color: #0ee1e8; font-weight: 800; margin-left: 5px;">{{$pack->Prix_Pack}} <span style="color: gray; font-weight: 600;">GCOIN</span></span>
       </a>
       
       <div class="Game_Buttons">
-        <form action="{{route('payment')}}" method="post">
+        <form action="{{route('payment', $pack->Id_Pack)}}" method="post">
           @csrf
-        <input  name="amount" hidden value="100">
-        <button class="Buy" type="submit"><a type="submit">Buy Now</a></button>
+        <input  name="amount" hidden value="{{$pack->Prix_Pack}}">
+        <input  name="Pack_Coins" hidden value="{{$pack->Pack_Coins}}">
+        <button class="Buy" type="submit">Buy Now</button>
         <button class="Add"><a href="#">Add To Card</a></button>
         </form>
       
@@ -43,124 +48,8 @@
 
 </div>
 </div>
-
-
-
-<div class="videos-container">
-<div class="pack">
-  <div class="thumbnail">
-    <img src="Images/Elite.png">
-  </div>
-  
-  <div class="video-details">
-    <div class="title">
-      <a href="" class="video-title">
-        FIFA 2022
-      </a>
-      
-      <div class="Game_Buttons">
-        <button class="Buy"><a href="#">Buy Now</a></button>
-        <button class="Add"><a href="#">Add To Card</a></button>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-
-
-<div class="videos-container">
-<div class="pack">
-  <div class="thumbnail">
-    <img src="Images/Master.png">
-  </div>
-  
-  <div class="video-details">
-    <div class="title">
-      <a href="" class="video-title">
-        FIFA 2022
-      </a>
-      
-      <div class="Game_Buttons">
-        <button class="Buy"><a href="#">Buy Now</a></button>
-        <button class="Add"><a href="#">Add To Card</a></button>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-
-
-<div class="videos-container">
-<div class="pack">
-  <div class="thumbnail">
-    <img src="Images/Glory.png">
-  </div>
-  
-  <div class="video-details">
-    <div class="title">
-      <a href="" class="video-title">
-        FIFA 2022
-      </a>
-      
-      <div class="Game_Buttons">
-        <button class="Buy"><a href="#">Buy Now</a></button>
-        <button class="Add"><a href="#">Add To Card</a></button>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-
-<div class="videos-container">
-<div class="pack">
-  <div class="thumbnail">
-    <img src="Images/Legend.png">
-  </div>
-  
-  <div class="video-details">
-    <div class="title">
-      <a href="" class="video-title">
-        FIFA 2022
-      </a>
-      
-      <div class="Game_Buttons">
-        <button class="Buy"><a href="#">Buy Now</a></button>
-        <button class="Add"><a href="#">Add To Card</a></button>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-
-<div class="videos-container">
-<div class="pack">
-  <div class="thumbnail">
-    <img src="Images/Royal.png">
-  </div>
-  
-  <div class="video-details">
-    <div class="title">
-      <a href="" class="video-title">
-        FIFA 2022
-      </a>
-      
-      <div class="Game_Buttons">
-        <button class="Buy"><a href="#">Buy Now</a></button>
-        <button class="Add"><a href="#">Add To Card</a></button>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
+@endif  
+@endforeach
 </section>
 
 @endsection

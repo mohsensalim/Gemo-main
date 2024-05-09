@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->bigInteger('IDG')->primary();
             $table->string('Title')->unique();
-            $table->string('Description')->nullable();
+            $table->longText('Description')->nullable();
             $table->string('Category')->nullable();
             $table->bigInteger('Jeux_Prix')->nullable();
             $table->date('date_publishing')->nullable();

@@ -353,8 +353,8 @@
                   
                     <select class="form-select  @error('genre') is-invalid @enderror" id="genre" name="genre" required>
                 <option selected disabled value="">Choose...</option>
-                <option value="Afghanistan">Man</option>
-                <option value="Åland Islands">Female</option>                
+                <option value="Man">Man</option>
+                <option value="Female">Female</option>                
                 </select>
                 @error('genre')
                                   
