@@ -30,7 +30,7 @@
     <div class="title">
       <a href="" class="video-title">
         {{$pack->Nom_Pack}}
-        <span style="color: #0ee1e8; font-weight: 800; margin-left: 5px;">{{$pack->Prix_Pack}} <span style="color: gray; font-weight: 600;">GCOIN</span></span>
+        <span style="color: #0ee1e8; font-weight: 800; margin-left: 5px;">{{$pack->Prix_Pack}} <span style="color: gray; font-weight: 600;">$</span> <span style="color: #0ee1e8; font-weight: 800; margin-left: 5px;">| Pack Coins : {{$pack->Pack_Coins}}</span></span>
       </a>
       
       <div class="Game_Buttons">

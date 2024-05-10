@@ -90,6 +90,7 @@ class RegisterController extends Controller
             'Etat'=>$Etat,
             'Etat_Mode_Friend'=>$Etat_Mode_Friends,
             'password' => Hash::make($data['password']),
+            'Coins' => 0,
         ]);
     }
 }

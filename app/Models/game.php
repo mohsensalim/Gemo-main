@@ -27,5 +27,12 @@ class game extends Model
         'ID_Pack',
     ];
 
+    public function paniergames()
 
+    {
+
+        return $this->hasMany(paniergame::class);
+
+    }
+    
 }

@@ -83,7 +83,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
     margin: auto; /* Ajout pour centrer le formulaire */
-    /* display: none; */
+    
 }
 
 .content-area main label {
@@ -158,6 +158,7 @@
     left: 20%;
     margin-top: 10px;
     transition: 0.3s;
+    
   }
  
   .containerCat:hover{
@@ -403,7 +404,7 @@
         height: fit-content;
        text-align: center;
     height: 460px;
-    display: none;
+   
       }
 
       .noappadded{

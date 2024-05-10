@@ -82,7 +82,8 @@ class CreatorRegisterController extends Controller
         {
             $request->validate([
 
-                "paypalemail"=>['required','string','unique:creators,email'],
+                "paypalemail"=>['required','string','unique:creatorpaiments,Identifiant'],
+                
                 
             ]);
 
@@ -98,11 +99,34 @@ class CreatorRegisterController extends Controller
                             'Etat_Paiment'=>'inactif',
                             'id'=>$creatorId,
                         ]);
+
+                        return redirect()->route('creator.dashboard.home');
         }
 
         if($request->B == "Bank")
         {
-            echo 'Bank';
+
+            $request->validate([
+
+                "bankname"=>['required','string'],
+                "rip"=>['required','string','unique:creatorpaiments,Identifiant']
+                
+            ]);
+
+
+            $lastCreatorPaiment = Creatorpaiment::latest()->first();
+
+            $newIDCP = $lastCreatorPaiment ? $lastCreatorPaiment->ID_CP + 1 : 1;
+            Creatorpaiment::create([
+
+                'ID_CP'=>$newIDCP,
+                'Mode_Paiment'=> $request->bankname, 
+                'Identifiant'=>$request->rip, 	 	
+                'Etat_Paiment'=>'inactif',
+                'id'=>$creatorId,
+            ]);
+
+            return redirect()->route('creator.dashboard.home');
         }
 
                 

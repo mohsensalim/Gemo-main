@@ -134,7 +134,7 @@ class GameController extends Controller
 
  public function store(Request $request)
 {
-    try {
+
         $lastGame = Game::latest()->first();
         $newIDG = $lastGame ? $lastGame->IDG + 1 : 1;
 
@@ -176,20 +176,9 @@ class GameController extends Controller
         game::create($data);
 
         return redirect()->route('creator.dashboard.home')->with('success', 'Game Added successfully!');
-    } catch (QueryException $e) {
-        // Log the error details
-        Log::error("QueryException occurred: " . $e->getMessage());
-        
-        // Redirect back with an error message
-        return redirect()->back()->with('error', 'An error occurred while saving the game. Please try again later.');
-    } catch (\Exception $e) {
-        // Log any other exceptions
-        Log::error("Exception occurred: " . $e->getMessage());
-        
-        // Redirect back with an error message
-        return redirect()->back()->with('error', 'An unexpected error occurred. Please try again later.');
     }
-}
+    
+
 
 
 
@@ -202,12 +191,13 @@ public function indexlibrary()
     ini_set('memory_limit', '1024M');
     $gamespurchased = paniergame::where('user_id', Auth::guard('web')->id())->with('game')->get();
 
-
+    
 $games = $gamespurchased->map(function ($gamepurchased) {
 
     return $gamepurchased->game;
 
 });
+
 return view('library', ['games' => $games]);
 }
 

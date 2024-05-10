@@ -16,9 +16,10 @@ class paniergame extends Model
         'IDG',
         'EtatAchat',
     ];
+    
     public function game()
     {
-        return $this->belongsTo(Game::class, 'IDG'); 
+        return $this->belongsTo(game::class, 'IDG'); 
     }
 
 }

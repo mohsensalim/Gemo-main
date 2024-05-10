@@ -115,13 +115,28 @@
                 </ul>
             </div>
         @endif
-
-        <input type="submit" class="btn btn-primary" name="ajouter" value="Submit" style="position:relative; right:40px;"><br>
+        <input type="hidden" id="errorCount" value="{{ $errors->count() }}">
+        <input type="submit" class="btn btn-primary publishbtn" name="ajouter" value="Submit" style="position:relative; right:40px;"><br>
     </form>
 </div>
 
+
+
+ <!-- ---------------------------------No Application Added-------------------------------------->
+
+ @if($CreatorGames->isEmpty())
+    <div class="noappaddedcontainer">
+    <div class="noappadded">
+
+    <h3>No Games Added</h3>
+
+  </div>
+
+    </div>
+    
+@else
 <!-- //---------------------------------Dashboard Default------------------------------------// -->
-<div class="containerDash content-section">
+<div class="containerDash content-section" >
   
   @foreach($CreatorGames as $CreatorGame)
   
@@ -154,18 +169,8 @@
 
 
       </div>
-    <!-- ---------------------------------No Application Added-------------------------------------->
-
-    <div class="noappaddedcontainer">
-    <div class="noappadded">
-
-    <h3>No Games Added</h3>
-
-  </div>
-
-    </div>
-
-
+   
+      @endif
 
 <!-- //---------------------------------payment_container------------------------------------// -->
 
@@ -217,12 +222,6 @@
     </div>
     </div>
 
-
-
-
-
-
-
     </main>
 
 </div>
@@ -231,12 +230,29 @@
 
 @section('scripts')
 <script>
+  console.log(document.getElementById('errorCount').value);
+  const errorCount = document.getElementById('errorCount').value;
 
+if (errorCount > 0) {
 
+    // There are validation errors
 
+    show('.publishcontainer');
+
+} else {
+
+    // There are no validation errors
+
+    show('.containerDash');
+
+}
+
+      
+      
+      
 function show(cc){
-            let C = document.querySelectorAll('.content-section');
-            let CCC = document.querySelector(cc);
+            const C = document.querySelectorAll('.content-section');
+            const CCC = document.querySelector(cc);
 
       for(var i=0;i<C.length;i++)
     {

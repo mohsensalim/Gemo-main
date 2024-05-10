@@ -18,7 +18,7 @@ class CreatorHomeController extends Controller
 
        $CreatorGames = game::where('id', Auth::guard('creator')->id())->get();
        $creatorpayinfo= Creatorpaiment::where('id', Auth::guard('creator')->id())->first();
-       $CreatorInstalls = paniergame::where('IDG',$CreatorGames->pluck('IDG'))->count();
+       $CreatorInstalls = paniergame::whereIn('IDG',$CreatorGames->pluck('IDG')->values())->count();
        $creatorpaymenthistory = Creatorpaiment::where('id', Auth::guard('creator')->id())->get();
 
        

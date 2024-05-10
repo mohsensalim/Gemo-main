@@ -18,11 +18,12 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-
+Route::post('/', [LoginController::class, 'Modefreindsauth'])->name('Modefriendsauth');
 Route::get('/', [MainController::class, 'index'])->name('Main');
 
 
-// Contact MA3NDOCH
+
+
 Route::get('/contact', function () {
     return view('Contact'); 
 })->name('contact');
@@ -34,7 +35,7 @@ Route::get('/packs', [PackController::class, 'index'])->name('packs');
 Route::get('/library', [GameController::class, 'indexlibrary'])->name('library');
 
 
-// Categories MA3NDOCH
+
 Route::get('/Categories', function () {
     return view('Categories');
 })->name('Categories');
@@ -56,13 +57,14 @@ Route::get('/CreatorRegister', function () {
 Route::get('/gamedetails', function () {
     return view('gamedetails');
 })->name('gamedetails');
+
 Route::get('/gamedetails/{gameid}', [GameController::class, 'show'])->name('gamedetails');
 
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 
-Route::post('/buygame/{gameid}', [GameController::class, 'BuyGame'])->name('buygame');
+Route::post('/buygame/{gameid}', [GameController::class, 'BuyGame'])->name('buygame')->middleware('auth');
 
 Auth::routes();
 

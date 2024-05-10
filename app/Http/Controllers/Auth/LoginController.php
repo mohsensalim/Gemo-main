@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Session;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 class LoginController extends Controller
 {
     /*
@@ -51,4 +53,31 @@ class LoginController extends Controller
         return redirect('/');
     }
 
+
+
+    public function Modefreindsauth(Request $request)
+    {
+       
+        $Username = User::where('Username', $request->Username)->first();
+
+        if($Username)
+        {
+            if($Username->Etat_Mode_Friend=="actif"){
+                if($Username->Pin_Mode_Friend==$request->Pin)
+                {
+                    echo'Auth With Success';
+                }
+                else{
+                    echo'Auth With Error';
+                }
+            }
+            else{
+                echo'Auth With Error';
+            }
+            
+        }else{
+            echo'Auth With Error';
+        }
+
+    }
 }

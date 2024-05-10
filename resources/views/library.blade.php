@@ -3,6 +3,7 @@
 @section('content')
 
 <!-- Games------------------------------------------------------------- -->
+
 <section class="CardCategories">
 @foreach($games as $game)
 
