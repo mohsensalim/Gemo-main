@@ -18,11 +18,17 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::post('/', [LoginController::class, 'Modefreindsauth'])->name('Modefriendsauth');
+
+
 Route::get('/', [MainController::class, 'index'])->name('Main');
 
+Route::get('/modefriends', function () {
+    return view('LibraryPageModeFreinds'); 
+})->name('MainMdeFriends');
 
+Route::post('/statue', [MainController::class, 'modefriends'])->name('modefriandsstatue');
 
+Route::post('/auth', [LoginController::class, 'Modefreindsauth'])->name('Modefriendsauth');
 
 Route::get('/contact', function () {
     return view('Contact'); 

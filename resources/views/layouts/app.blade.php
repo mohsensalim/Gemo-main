@@ -113,9 +113,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('profile') }}">
-                                             {{ __('Profile') }}
-                                    </a>
+                              
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -183,25 +181,27 @@
       </div>
   </div>
 
+ 
 
   <!-------------------Login PopUp----------------------->
 <!-------------------Mode Friends PopUp----------------------->
 <div class="login_popup" >
   <div class="login">
-    <form action="">
+    <form action="{{route('modefriandsstatue')}}" method="post">
+        @csrf
       <fieldset>
        
        <div class="mb-4">
   <label for="ModeFriendsPin" class="form-label">Mode Friends Pin</label>
-  <input type="text" class="form-control" id="ModeFriendsPin" readonly value="">
+  <input type="text" class="form-control" id="ModeFriendsPin" name = "Pin" readonly value="{{ isset($Pin) ? $Pin : '' }}">
 </div>
         <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="EtatModeFriends">
+  <input class="form-check-input" type="checkbox" value="" id="EtatModeFriends" name="etatmode">
   <label class="form-check-label" for="EtatModeFriends">
   Etat Mode Friends
   </label>
 </div>
-        <button type="submit"><a href="#">Submit</a></button>
+        <button type="submit" style="color:white;">Submit</button>
       </fieldset>
     </form>
   </div>

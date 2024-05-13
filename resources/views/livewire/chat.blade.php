@@ -3,7 +3,7 @@
         <h3 class=" text-center">
 
             @if (auth()->user()->email == 'samir.gamal77@yahoo.com')
-                <a class="btn btn-primary" href="{{ Url('delete_chat') }}">حذف المحادثة</a>
+                <a class="btn btn-primary" href="{{ Url('delete_chat') }}">Delete Conversation</a>
             @endif
             Gemo Live Chat
         </h3>

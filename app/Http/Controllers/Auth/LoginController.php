@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\game;
 use App\Models\User;
+use App\Models\paniergame;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth; 
@@ -58,25 +60,36 @@ class LoginController extends Controller
     public function Modefreindsauth(Request $request)
     {
        
-        $Username = User::where('Username', $request->Username)->first();
+        $User = User::where('Username', $request->Username)->first();
+        $gamespurchased = paniergame::where('user_id', $User->id)->with('game')->get();
+        
+        $games = $gamespurchased->map(function ($gamepurchased) {
 
-        if($Username)
+            return $gamepurchased->game;
+        
+        });
+
+
+
+        if($User)
         {
-            if($Username->Etat_Mode_Friend=="actif"){
-                if($Username->Pin_Mode_Friend==$request->Pin)
+            if($User->Etat_Mode_Friend=="actif"){
+                if($User->Pin_Mode_Friend==$request->Pin)
                 {
-                    echo'Auth With Success';
+                    $auth=true;
+                    $username = $User->Username;
+                    return view('LibraryPageModeFreinds', ['auth' => $auth, 'username' => $username, 'games' => $games]);
                 }
                 else{
-                    echo'Auth With Error';
+                    return redirect()->back()->withErrors('Auth Error');
                 }
             }
             else{
-                echo'Auth With Error';
+                return redirect()->back()->withErrors('Auth Error');
             }
             
         }else{
-            echo'Auth With Error';
+            return redirect()->back()->withErrors('Auth Error');
         }
 
     }

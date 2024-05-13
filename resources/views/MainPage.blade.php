@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('Pin') {{$Pin}} @endsection
+
 @section('content')
 
 <div id="main">

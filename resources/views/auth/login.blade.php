@@ -35,16 +35,7 @@
                     @enderror
                 
 
-                <!-- REMEMEBER---------------------------------------- -->
-                <div class="row mb-1" id="ChekcRem">
-                            
-                                
-                                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label for="remember">Remember Me</label>
-                               
-                            
-                        </div>
+              
 
 
 
@@ -52,11 +43,7 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                                
 
 
                 
