@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
+@if(isset($Pin))
 @section('Pin') {{$Pin}} @endsection
+@endif
+
+
+@if(session()->has('gamecart') )
+{{$gamecart = session('gamecart')}}
+
+@section('gamecart') {{ $gamecart }} @endsection
+
+@endif
+
+@if(isset($gamescart))
+  @section('gamecart') {{ $gamecart=$gamescart }} @endsection
+@endif
+
 
 @section('content')
 
@@ -10,6 +25,11 @@
         {{ session('error') }}
     </div>
     @endif
+
+   <div id="fail" style="width:100%; margin-top:30px; position:fixed; z-index:2;">
+
+   </div>
+
     @if(session('success'))
     <div class="alert alert-success" style="width:100%; margin-top:30px;">
         {{ session('success') }}
@@ -109,8 +129,10 @@
               <div class="Game_Buttons">
               
                 <button class="Buy" href="{{route('gamedetails', $game->IDG)}}"><a href="{{route('gamedetails', $game->IDG)}}" type="submit">Buy Now</a></button>
-                <button class="Add"><a href="#">Add To Card</a></button>
-              
+                <!-- <form action="{{route('addtocart', $game->IDG)}}" method="post" style="display:inline;"> -->
+                <!-- @csrf -->
+                <button class="Add"  onclick="addtocart({{$game->IDG}}); getcart();">Add To Card</button>
+                <!-- </form> -->
               </div>
             </div>
           </div>
@@ -124,7 +146,7 @@
 <div class="videos-container">
         <div class="video">
           <div class="thumbnail">
-            <img src="ImagesSlider/F.png">
+            <img src="{{ asset('ImagesSlider/F.png') }}">
           </div>
           <div class="video-details">
             <div class="title">
@@ -147,7 +169,7 @@
 <div class="videos-container">
         <div class="video">
           <div class="thumbnail">
-            <img src="ImagesSlider/Call.png">
+            <img src="{{ asset('ImagesSlider/Call.png') }}">
           </div>
           <div class="video-details">
             <div class="title">
@@ -171,7 +193,7 @@
 <div class="videos-container">
         <div class="video">
           <div class="thumbnail">
-            <img src="ImagesSlider/CNTR.png">
+            <img src="{{ asset('ImagesSlider/CNTR.png') }}">
           </div>
           <div class="video-details">
             <div class="title">
@@ -195,7 +217,7 @@
 <div class="videos-container">
         <div class="video">
           <div class="thumbnail">
-            <img src="ImagesSlider/GT.png">
+            <img src="{{ asset('ImagesSlider/GT.png') }}">
           </div>
           <div class="video-details">
             <div class="title">
@@ -218,7 +240,7 @@
 <div class="videos-container">
         <div class="video">
           <div class="thumbnail">
-            <img src="ImagesSlider/VL.png">
+            <img src="{{ asset('ImagesSlider/VL.png') }}">
           </div>
           <div class="video-details">
             <div class="title">

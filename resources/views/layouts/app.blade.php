@@ -19,7 +19,10 @@
     <link rel="stylesheet" href="styleReg.css">
     <link rel="stylesheet" href="{{ asset('styleDetails.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+       
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
@@ -31,8 +34,10 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+    
     <div id="app">
         <div class="NavContainer">
+        
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="nav">
             <div class="container">
            
@@ -41,7 +46,7 @@
                 </a>
 
                 <div class="nav-item dropdown" id="categoriesnav" style="width:10px">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle categories" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -51,7 +56,7 @@
           <a class="dropdown-item" href="{{route('Categories')}}">Adventure</a>
         </div>
     </div>
-                <form action="">
+                <form action="" class="searchbar">
             <input type="text" placeholder="Search">
             <button><i class="material-icons">search</i></button>
         </form>
@@ -107,7 +112,7 @@
                             @endif
                         @else
                         
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown username">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -133,6 +138,7 @@
 
             
         </nav>
+        
         
         <div class="containerAside">
         <nav>
@@ -170,18 +176,58 @@
 
       </div>
 <!-- ----------------------------------------------- -->
+@guest
+
+@else
+        <div id="body">
         <div class="cartTab">
       <h1>Shopping Cart</h1>
       <div class="listCart">
+          <div class="gamecard">
+          @if(isset($gamecart))
+          @foreach($gamecart as $game)
+          <div class="containerCatcard" id="{{ $game->IDG }}">
+          <div class="sub_containercard">
+          <h3>{{$game->Title}}</h3>
+          <h4>{{$game->Jeux_Prix}} <span>GCOIN</span></h4>
+          <div class="image">
+          <img src="data:image/jpeg;base64,{{ base64_encode($game->Main_Picture) }}" >
+          </div>
+          <div class="btns">
+                <!-- <form action="{{route('removefromcart',$game->IDG)}}" method="post" style="display:inline;">
+                @csrf
+                    @method('DELETE') -->
+              <button id="card" onclick="deletefromcart({{$game->IDG}})" data-gameid="{{$game->IDG}}">Remove</button>
+              <!-- </form> -->
+              <form action="{{route('gamedetails', $game->IDG)}}" method="get" style="display:inline;">
+              <button id="buy" type="submit">Buy</button>
+              </form>
+          </div>
+          </div>
+       
+       </div>
+ 
+          @endforeach
+         
           
+     
+
+    @endif
+
+
+
+
+
+          </div>
+
       </div>
       <div class="btn">
           <button class="close">CLOSE</button>
-          <button class="checkOut">Check Out</button>
+          
       </div>
   </div>
-
- 
+  </div>
+ @endguest
 
   <!-------------------Login PopUp----------------------->
 <!-------------------Mode Friends PopUp----------------------->
@@ -260,26 +306,13 @@
    
    
 <script>
-
-// let CreatorDahs = document.querySelector(".containerAside");
-// let CreatorClick = document.querySelector(".Creator");
-
-// CreatorClick.addEventListener('click', function(event) {
-//     event.preventDefault(); // Prevent default link behavior
-//     CreatorDahs.style.display = 'none';
-// });
+let check =false;
 
 
 
 
-//    function scrollDown() {
-//          document.getElementById('chat').scrollTop =  document.getElementById('chat').scrollHeight
-//         }
-
-//        scrollDown();
-    
         let iconCart = document.querySelector('.icon-cart');
-        let body = document.querySelector('body');
+        let body = document.querySelector('#body');
         let closeCart = document.querySelector('.close');
 
 
@@ -351,8 +384,207 @@ function redirect()
     window.location.href='{{route('packs')}}';
 
 }
-       
+
+////////////////////// Remove Game From Cart /////////////////////////
     
+function deletefromcart(id)
+{
+    console.log('Deleting item with ID:', id);
+    $.ajax({
+
+        url:'/removefromocart/'+id,
+        type:'DELETE',
+        data:{
+            _token: "{{ csrf_token() }}"
+            
+        },
+
+        success:function(response)
+        {
+           
+            
+            if (response == 'success') {
+                // Remove the game card from the UI
+                $('#' + id).remove();
+                
+            } else {
+                // Display error message
+                alert(response.error); // You can replace this with your preferred way of displaying messages
+            }
+        },
+        error: function(xhr, status, error) {
+
+// Display error message
+
+console.log('Error: ' + error.message);
+
+}
+
+    });
+
+}
+
+
+////////////////////////////// add to cart ///////////////////////////////////////////////////
+
+
+function addtocart (id)
+{
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+    });
+
+    $.ajax({
+
+url:'/addtocart/'+id,
+type:'POST',
+data:{
+
+    _token: "{{ csrf_token() }}"
+    
+},
+
+success:function(response)
+{
+   
+    
+    if (response.success) {
+        check=true;
+
+    
+        // Remove the game card from the UI
+        console.log('jsfslk');
+        console.log(response.game);
+        var gameImageData = response.game.Main_Picture; // Assuming this is the base64 encoded image data
+        var gameImageSrc = 'data:image/jpeg;base64,' + gameImageData;
+        var gameCard = `<div class="containerCatcard" id="${response.game.IDG}">
+
+
+<div class="sub_containercard">
+
+
+    <h3>${response.game.Title}</h3>
+
+
+    <h4>${response.game.Jeux_Prix} <span>GCOIN</span></h4>
+
+
+    <div class="image">
+
+
+      
+    <img src="${gameImageSrc}" alt="Game Image">
+
+
+    </div>
+
+
+    <div class="btns">
+
+
+        <button id="card" onclick="deletefromcart(${response.game.IDG})" data-gameid="${response.game.IDG}">Remove</button>
+        <form action="gamedetails/${response.game.IDG}" method="get" style="display:inline;">
+              <button id="buy" type="submit">Buy</button>
+              </form>
+
+    </div>
+
+
+</div>
+
+
+</div>`;
+
+
+$('.gamecard').append(gameCard);
+        
+        
+    } 
+
+    if(response.fail)
+    {
+        // document.getElementById('error-message').textContent = 'You have already added Or Purchased this game';
+        var error = `<div class="alert alert-danger" id="errorcontent">You have already added Or Purchased this game</div>`;
+        $('#fail').append(error);
+
+        setTimeout(function() {
+            $('#errorcontent').remove();
+    }, 2000); // 2000 milliseconds = 2 seconds
+        
+    }
+
+
+},
+error: function(xhr, status, error) {
+
+// Display error message
+
+console.log('Error: ' + error.message);
+
+}
+
+});
+
+}
+
+
+
+
+function getcart()
+{
+
+
+    $.ajax({
+
+url:'/',
+type:'Get',
+data:{
+    _token: "{{ csrf_token() }}"
+    
+},
+
+success:function(response)
+{
+   
+    
+    console.log(response);
+},
+error: function(xhr, status, error) {
+
+// Display error message
+
+console.log('Error: ' + error.message);
+
+}
+
+});
+
+
+}
+
+
+
+$(document).ready(function() {
+    $.ajax({
+        type: 'GET',
+        url: '/getcart',
+        success: function(data) {
+            // Handle the data returned from the server
+            console.log('data');
+            console.log(data);
+        },
+        error: function(xhr, status, error) {
+            // Handle errors
+            console.error(xhr.responseText);
+        }
+    });
+});
+
+
+
 </script>
 
 @yield('scripts')

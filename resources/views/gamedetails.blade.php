@@ -2,10 +2,20 @@
 
 
 @section('content')
-
+@if(session('error'))
+    <div class="alert alert-danger" style="width:100%; margin-top:30px;">
+        {{ session('error') }}
+    </div>
+    @endif
+    @if(session('success'))
+    <div class="alert alert-success" style="width:100%; margin-top:30px;">
+        {{ session('success') }}
+    </div>
+    @endif
 @if(isset($game))
 <div class="DetailsContaier">
-	
+
+
     <div class="imgs">
 		<div class="Mainimage">
 		<img src="data:image/jpeg;base64,{{ base64_encode($game->Main_Picture) }}" >
@@ -35,11 +45,16 @@
 
 		
 			<div class="Game_Buttons">
-			<form action="{{route('buygame', $game->IDG)}}" method="post">
+			<form action="{{route('buygame', $game->IDG)}}" method="post" style="display:inline;">
 				@csrf
                 <button class="Buy" type="submit">Buy Now</button>
-                <button class="Add"><a href="#">Add To Card</a></button>
+                
               </form>
+
+			  <form action="{{route('addtocart', $game->IDG)}}" method="post" style="display:inline;">
+                @csrf
+                <button class="Add"  type="submit">Add To Card</button>
+                </form>
 
 	</div>
 </div>

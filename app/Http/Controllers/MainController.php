@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use session;
 use App\Models\game;
 use App\Models\User;
+use App\Models\paniergame;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,12 +16,21 @@ class MainController extends Controller
 
     public function index()
     {
+        $user = Auth::guard('web')->id();
 
+        $gamesadded = Paniergame::where('user_id', Auth::guard('web')->id())->where('EtatAchat', 'inactif')->pluck('IDG');
+        $relatedGames = Game::whereIn('IDG', $gamesadded)->get();
+        
         $games = game::all();
         $Pin = rand(9999, 1000);
-        return view('MainPage',['games'=> $games,'Pin' => $Pin]);
+        return view('MainPage',['games'=> $games,'Pin' => $Pin, 'gamescart' => $relatedGames]);
 
     }
+
+   
+
+
+
 
     public function modefriends(Request $request)
     {

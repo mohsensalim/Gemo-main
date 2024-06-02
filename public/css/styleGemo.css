@@ -187,7 +187,7 @@ position: relative;
   transition: .5s;
   z-index: 199999999;
 }
-body.showCart .cartTab{
+.showCart .cartTab{
   right: 0;
 }
 .cartTab h1{
@@ -199,14 +199,14 @@ body.showCart .cartTab{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-.cartTab button{
+.cartTab .btn button{
   background-color: #E8BC0E;
   border: none;
   font-family: Poppins;
   font-weight: 500;
   border-radius: 15px;
   width: 90%;
-  margin-left: 35px;
+  margin-left: 73px;
   cursor: pointer;
 }
 
@@ -473,7 +473,7 @@ color: white;
  /* margin: auto; */
  left:225px;
  top: 70px;
-
+ 
 }
 
 .item{
@@ -809,3 +809,50 @@ fieldset{
 
 /* ******************************* End Mode Friend ****************************** */
 
+/* .navapp
+{
+  display: grid;
+  grid-template-columns: repeat(15,1fr);
+  grid-template-rows: auto auto auto ;
+  grid-template-areas: "logo logo logo categorie categorie search search cart coins  coins user";
+  gap:200px;
+}
+
+.categories{
+  grid-area: categorie;
+}
+
+#logoimg{
+  grid-area: logo;
+}
+
+.searchbar{
+  grid-area: search;
+}
+
+.header-icons{
+  grid-area: cart;
+}
+
+.coindiv{
+  grid-area: coins;
+}
+
+.username{
+  grid-area: user;
+} */
+
+
+@media only screen and (max-width: 767px) {
+  /* CSS styles for small screens */
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* CSS styles for medium screens */
+}
+
+
+@media only screen and (min-width: 992px) {
+  /* CSS styles for large screens */
+}

@@ -5,6 +5,7 @@
 <!-- Games------------------------------------------------------------- -->
 
 <section class="CardCategories">
+  @if(isset($games))
 @foreach($games as $game)
 
 
@@ -30,7 +31,7 @@
 
 @endforeach
 </section>
-
+@endif
 @endsection
 
 

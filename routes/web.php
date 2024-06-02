@@ -21,6 +21,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 
 Route::get('/', [MainController::class, 'index'])->name('Main');
+Route::get('/getcart', [GameController::class, 'getcart'])->name('getcart');
 
 Route::get('/modefriends', function () {
     return view('LibraryPageModeFreinds'); 
@@ -40,6 +41,8 @@ Route::get('/packs', [PackController::class, 'index'])->name('packs');
 
 Route::get('/library', [GameController::class, 'indexlibrary'])->name('library');
 
+Route::delete('/removefromocart/{gameid}', [GameController::class, 'removefromcart'])->name('removefromcart');
+Route::post('/addtocart/{gameid}', [GameController::class, 'add_to_cart'])->name('addtocart');
 
 
 Route::get('/Categories', function () {
