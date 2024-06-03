@@ -841,10 +841,166 @@ fieldset{
 .username{
   grid-area: user;
 } */
-
+.resposlider{
+  display: none;
+}
 
 @media only screen and (max-width: 767px) {
   /* CSS styles for small screens */
+.containere
+{
+  display: none;
+}
+
+  @keyframes slidy {
+    0% { left: 0%; }
+    20% { left: 0%; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -200%; }
+    70% { left: -200%; }
+    75% { left: -300%; }
+    95% { left: -300%; }
+    100% { left: -400%; }
+    }
+    
+    body { margin: 0;} 
+    div#slider { overflow: hidden; width: 120%; }
+    div#slider figure img { width: 20%; float: left; }
+    div#slider figure { 
+      position: relative;
+      width: 500%;
+      margin: 0;
+      left: 0;
+      text-align: left;
+      font-size: 0;
+      animation: 30s slidy infinite; 
+    }
+    .py-4{
+      overflow: hidden;
+    }
+    .resposlider{
+      display: block;
+      width: 100%;
+    }
+    .resposlider img{
+      width: 100%;
+    }
+
+
+    .asiderespo{
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    .asiderespo a{
+      width: 100%;
+      
+      font-weight: 500;
+      font-size: 15px;
+      color: rgb(100, 100, 100);
+    }
+
+
+    .containerAside
+    {
+      display: none;
+    }
+
+
+
+
+    .coindiv{
+      position: relative;
+      background-color: rgb(127, 127, 127);
+      width: 116px;
+      height: 30px;
+      right: 45px;
+      bottom: 72px;
+      border-radius: 15px;
+    
+    }
+
+
+
+    .container .header-icons {
+      display: flex;
+      align-items: center;
+      margin-left: 35%;
+      position: relative;
+      bottom: 72px;
+      left: 236px;
+  }
+
+  .navbar-toggler
+  {
+    position: relative;
+    bottom: 72px;
+  }
+
+  .username{
+    position: relative;
+    bottom: 72px;
+    z-index: 3;
+  }
+
+
+  nav .container form {
+    display: flex;
+    height: 40px;
+    width: 500px;
+    position: relative;
+    left: 4px;
+    top: 32px;
+    border: 1px solid black;
+}
+
+
+
+.videos-container {
+  width: 118%;
+  display: block;
+  position: relative;
+  right: 40px;
+}
+.video {
+  width: 226px;
+  margin-bottom: 40px;
+  /* cursor: pointer; */
+}
+
+
+.CardContainer {
+  margin-top: 0;
+}
+
+
+.MainCat {
+
+  left: 7%;
+  top: 22px;
+}
+
+footer .right {
+  position: relative;
+  right: 85px;
+  bottom: -30px;
+  color: white;
+}
+
+footer .left {
+  position: relative;
+  left: 100px;
+  bottom: 19px;
+}
+
+footer {
+
+  height: 107px;
+  top: 4px;
+
+}
+
 }
 
 
@@ -855,4 +1011,18 @@ fieldset{
 
 @media only screen and (min-width: 992px) {
   /* CSS styles for large screens */
+
+  .containere
+  {
+    display: block;
+  }
+
+
+  .asiderespo{
+    display: none;
+  }
+  .containerAside{
+    display: block;
+  }
+
 }

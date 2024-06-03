@@ -56,7 +56,7 @@
           <a class="dropdown-item" href="{{route('Categories')}}">Adventure</a>
         </div>
     </div>
-                <form action="" class="searchbar">
+                <form action="" class="searchbar" id="search">
             <input type="text" placeholder="Search">
             <button><i class="material-icons">search</i></button>
         </form>
@@ -116,7 +116,7 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
+                                
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                               
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -129,6 +129,14 @@
                                         @csrf
                                     </form>
                                 </div>
+
+                                <div class="asiderespo">
+                                <a href="{{route('Main')}}" class="active">Magasin</a>
+                                <a href="{{route('Chat')}}">Chat</a>
+                                 <a href="{{route('packs')}}">Pakcs</a>
+                                <a href="{{route('library')}}">Library</a>
+                                <a href="#" onclick="event.preventDefault(); ShowLogin()">Mode Friends</a>
+                                </div>
                             </li>
                             
                         @endguest
@@ -136,6 +144,8 @@
                 </div>
             </div>
 
+           
+           
             
         </nav>
         
@@ -308,6 +318,28 @@
 <script>
 let check =false;
 
+// Get the element you want to check
+var element = document.querySelector(".navbar-collapse");
+var button = document.querySelector(".navbar-toggler");
+var form = document.querySelector("#search");
+
+button.addEventListener('click', () => {
+
+
+    setTimeout(function() {
+        var style = window.getComputedStyle(element);
+if (style.display === "none") {
+    form.style.left = "4px";
+} else {
+    form.style.left = "500px";
+}
+    }, 20); // 2 seconds
+});
+
+
+
+   
+        
 
 
 

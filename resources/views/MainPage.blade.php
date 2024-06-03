@@ -104,9 +104,18 @@
   </div>
 
 
-
-
-
+<div class="resposlider">
+  <base href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/">
+<div id="slider">
+<figure>
+<img src="austin-fireworks.jpg" alt>
+<img src="taj-mahal_copy.jpg" alt>
+<img src="ibiza.jpg" alt>
+<img src="ankor-wat.jpg" alt>
+<img src="austin-fireworks.jpg" alt>
+</figure>
+</div>
+</div>
 
 <!-- GAMES------------------------------------------------------------- -->
 <div class="MainCat"> Last Added</div>
