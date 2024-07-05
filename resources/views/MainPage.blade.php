@@ -140,7 +140,7 @@
                 <button class="Buy" href="{{route('gamedetails', $game->IDG)}}"><a href="{{route('gamedetails', $game->IDG)}}" type="submit">Buy Now</a></button>
                 <!-- <form action="{{route('addtocart', $game->IDG)}}" method="post" style="display:inline;"> -->
                 <!-- @csrf -->
-                <button class="Add"  onclick="addtocart({{$game->IDG}}); getcart();">Add To Card</button>
+                <button class="Add"  onclick="addtocart({{$game->IDG}});">Add To Card</button>
                 <!-- </form> -->
               </div>
             </div>
@@ -152,120 +152,7 @@
 @endforeach
 
 
-<div class="videos-container">
-        <div class="video">
-          <div class="thumbnail">
-            <img src="{{ asset('ImagesSlider/F.png') }}">
-          </div>
-          <div class="video-details">
-            <div class="title">
-              <a href="" class="video-title">
-                Far Cry 6
-              </a>
-              
-              <div class="Game_Buttons">
-                <button class="Buy"><a href="#">Buy Now</a></button>
-                <button class="Add"><a href="#">Add To Card</a></button>
-              </div>
-            </div>
-          </div>
 
-        </div>
-</div>
-
-
-
-<div class="videos-container">
-        <div class="video">
-          <div class="thumbnail">
-            <img src="{{ asset('ImagesSlider/Call.png') }}">
-          </div>
-          <div class="video-details">
-            <div class="title">
-              <a href="" class="video-title">
-               Call Of Duty
-              </a>
-              
-              <div class="Game_Buttons">
-                <button class="Buy"><a href="#">Buy Now</a></button>
-                <button class="Add"><a href="#">Add To Card</a></button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-</div>
-
-
-
-
-<div class="videos-container">
-        <div class="video">
-          <div class="thumbnail">
-            <img src="{{ asset('ImagesSlider/CNTR.png') }}">
-          </div>
-          <div class="video-details">
-            <div class="title">
-              <a href="" class="video-title">
-                Counter Strike
-              </a>
-              
-              <div class="Game_Buttons">
-                <button class="Buy"><a href="#">Buy Now</a></button>
-                <button class="Add"><a href="#">Add To Card</a></button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-</div>
-
-
-
-
-<div class="videos-container">
-        <div class="video">
-          <div class="thumbnail">
-            <img src="{{ asset('ImagesSlider/GT.png') }}">
-          </div>
-          <div class="video-details">
-            <div class="title">
-              <a href="" class="video-title">
-                Grand Theft Auto V
-              </a>
-              
-              <div class="Game_Buttons">
-                <button class="Buy"><a href="#">Buy Now</a></button>
-                <button class="Add"><a href="#">Add To Card</a></button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-</div>
-
-
-
-<div class="videos-container">
-        <div class="video">
-          <div class="thumbnail">
-            <img src="{{ asset('ImagesSlider/VL.png') }}">
-          </div>
-          <div class="video-details">
-            <div class="title">
-              <a href="" class="video-title">
-               Valorant
-              </a>
-              
-              <div class="Game_Buttons">
-                <button class="Buy"><a href="#">Buy Now</a></button>
-                <button class="Add"><a href="#">Add To Card</a></button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-</div>
             
 </section>
 @endsection
@@ -294,6 +181,9 @@ function next1(){
 }
 
 setInterval(next1,5000);
+
+
+
 
 
 </script>

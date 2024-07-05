@@ -137,9 +137,13 @@
 @else
 <!-- //---------------------------------Dashboard Default------------------------------------// -->
 <div class="containerDash content-section" >
-  
+
+
+
   @foreach($CreatorGames as $CreatorGame)
-  
+  @php
+$installs=0;
+@endphp
 <div class="containerCat" id="dashboardContainer">
          
           <div class="sub_container">
@@ -148,9 +152,24 @@
               <h1>{{$CreatorGame->Category}}</h1>
           </div>
           <div class="game_users">
-           <h5>{{$CreatorInstalls}} User</h5>
+           
+          @foreach($CreatorPurchasedgames as $CreatorPurchasedgame)
+          @php
+          
+          if($CreatorPurchasedgame->IDG == $CreatorGame->IDG)
+          {
+            $installs= $installs +1;
+          }
+              
+          
+          @endphp
+          
+           @endforeach
+           <h5>{{$installs}} User</h5>
+          
           </div>
           <div class="time_system">
+          
               <h1>{{ $CreatorGame->created_at->format('M j, Y') }}</h1>
           </div>
           <div class="image">

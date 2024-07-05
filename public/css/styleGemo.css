@@ -915,7 +915,7 @@ fieldset{
       background-color: rgb(127, 127, 127);
       width: 116px;
       height: 30px;
-      right: 45px;
+      right: 60px;
       bottom: 72px;
       border-radius: 15px;
     
@@ -929,13 +929,20 @@ fieldset{
       margin-left: 35%;
       position: relative;
       bottom: 72px;
-      left: 236px;
+      left: 220px;
   }
 
-  .navbar-toggler
+  .notguest-collapse
   {
     position: relative;
     bottom: 72px;
+    display: block;
+  }
+
+  .guest-collapse{
+    position: relative;
+    bottom: 94px;
+    left: 365px;
   }
 
   .username{
@@ -1001,11 +1008,187 @@ footer {
 
 }
 
+#categoriesnavrespo
+{
+
+  position: relative;
+  left: 0;
+
+}
+
+#categoriesnav
+{
+  display: none;
+}
+
+
+
 }
 
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* CSS styles for medium screens */
+  
+  #categoriesnavrespo
+  {
+  display: none;
+  }
+  
+  .coindiv{
+    width: 340px;
+  
+  }
+
+  #categoriesnav
+  {
+    display: block;
+    font-size: 25px;
+    position: absolute;
+    left: 264px;
+  }
+  .dropdown-menu.show {
+  
+    font-size: 25px;
+  }
+
+  #navbarSupportedContent{
+    font-size: 25px;
+    position: absolute;
+    right: 115px;
+  }
+
+
+  nav .container form {
+
+    width: 640px;
+    
+    left: 62px;
+}
+
+  
+  #logoimg{
+    position: relative;
+    left: -233px;
+    width: 310px;
+  }
+
+  .container .header-icons {
+    display: flex;
+    align-items: center;
+    margin-left: 35%;
+    position: relative;
+    bottom: 4px;
+    left: -24px;
+}
+.cartTab{
+  width: 29%;
+}
+
+.cartTab .btn button {
+  font-size: 30px;
+  width: 109%;
+}
+
+.containerAside a{
+  font-size: 25px;
+}
+
+  /*
+  
+  #categoriesnavrespo
+  {
+    display: none;
+  }
+
+  .containere 
+  {
+    width: 71%;
+    height: 64%
+  }
+
+
+
+
+  .py-4{
+    overflow: hidden;
+  }
+ 
+
+
+  
+
+
+
+
+
+
+
+.show
+{
+  position: relative;
+  left: -279px;
+   
+}
+
+  .coindiv{
+    position: absolute;
+    background-color: rgb(127, 127, 127);
+    width: 116px;
+    height: 30px;
+    right: 60px;
+    bottom: 59px;
+    left: 399px;
+    border-radius: 15px;
+  
+  }
+
+
+
+  .container .header-icons {
+    display: flex;
+    align-items: center;
+    margin-left: 35%;
+    position: relative;
+    bottom: 4px;
+    left: -213px;
+}
+
+.notguest-collapse
+{
+  position: relative;
+  bottom: 72px;
+  display: block;
+}
+
+.guest-collapse{
+  position: relative;
+  bottom: 94px;
+  left: 365px;
+}
+
+#navbarDropdown{
+  position: absolute;
+  left: -262px;
+} */
+
+.asiderespo{
+  display: none;
+}
+
+
+/* nav .container form {
+  display: flex;
+  height: 40px;
+  width: 1000px;
+  position: relative;
+  left: -41px;
+  top: -47px;
+  border: 1px solid black;
+} */
+
+
+
+
 }
 
 
@@ -1025,4 +1208,16 @@ footer {
     display: block;
   }
 
+  #categoriesnav
+{
+  display: block;
 }
+
+#categoriesnavrespo
+{
+  display: none;
+}
+
+
+}
+

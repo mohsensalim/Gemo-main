@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('styleLog.css') }}">
     <link rel="stylesheet" href="{{ asset('styleReg.css') }}">
     <link rel="stylesheet" href="{{ asset('stylePaymentCreator.css') }}">
+    <link rel="icon"  href="{{ asset('images/icon.png') }}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

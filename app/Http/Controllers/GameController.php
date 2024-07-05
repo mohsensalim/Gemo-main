@@ -59,9 +59,12 @@ foreach($paniergames as $paniergame)
             return redirect()->route('Main')->with('error','Please Buy More Gcoins');
         }
       
-        $gamesadded = Paniergame::where('user_id', Auth::guard('web')->id())->pluck('IDG');
+        $gamesadded = Paniergame::where('user_id', Auth::guard('web')->id())->pluck('IDG')->toArray();;
 
+     
+        if(!empty($gamesadded)&& in_array($gameid, $gamesadded)){
 
+        
         if($gamesadded[0] == $gameid)
         {
             $gamepanier=Paniergame::where('user_id', Auth::guard('web')->id())->where('IDG', $gameid);
@@ -70,6 +73,7 @@ foreach($paniergames as $paniergame)
                 'EtatAchat'=>"actif"
             ]);
         }
+    }
         else{
             $lastGame = paniergame::latest()->first();
             $newIDUG = $lastGame ? $lastGame->IDUG + 1 : 1;
@@ -82,7 +86,7 @@ foreach($paniergames as $paniergame)
         }
         
 
-
+    
        
         $newusercoins=$usercoins - $gamecoins;
         
@@ -244,16 +248,16 @@ return view('library', ['games' => $games]);
 
 
 
-public function add_to_cart($gameid)
+public function add_to_cart(Request $request, $gameid)
 {
     
   
     $game=game::where('IDG', $gameid)->first();
 
-    if(!$game)
-    {
-        return redirect()->back();
+    if (!$game) {
+        return response()->json(['error' => 'Game not found'], 404);
     }
+    
    
     $user = Auth::guard('web')->id();
     $paniergames = paniergame::all();
@@ -333,6 +337,15 @@ function getcart()
     return response()->json(['relatedGames' => $relatedGames]);
 }
 
+
+public function myAjaxMethod(Request $request)
+{
+    $response = response()->json(['data' => 'Some data']);
+    $response->header('http://127.0.0.1:8000/', '*');
+    $response->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    $response->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    return $response;
+}
 
 
 }
